@@ -24,7 +24,7 @@ type ProgressBar interface {
 
 type CmdProgressBar interface {
 	ProgressBar
-	Print()
+	Print(label string)
 }
 
 func NewCmdProgressBar() CmdProgressBar {
@@ -106,7 +106,7 @@ func (b *cmdProgressBar) SetFillChar(c rune) {
 func (b *cmdProgressBar) SetLength(l int) {
 	b.length = l
 }
-func (b *cmdProgressBar) Print() {
+func (b *cmdProgressBar) Print(label string) {
 	percent := (b.value - b.min) / (b.max - b.min)
 	fillCount := int(percent * float64(b.length))
 	blankCount := b.length - fillCount
@@ -117,5 +117,5 @@ func (b *cmdProgressBar) Print() {
 	for i := 0; i < blankCount; i++ {
 		bar.WriteRune(b.blankChar)
 	}
-	fmt.Printf("[%s]%8.2f%%\r", &bar, b.value)
+	fmt.Printf("\r[%s] %s %8.2f%%", &bar, label, percent*100)
 }

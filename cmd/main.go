@@ -11,7 +11,7 @@ func main() {
 	step := (b.Max() - b.Min()) * 0.1
 	for b.Value() < b.Max() {
 		b.SetValue(b.Value() + step)
-		b.Print()
+		b.Print("")
 		time.Sleep(time.Second * 1)
 	}
 }
