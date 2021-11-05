@@ -1,8 +1,9 @@
 package main
 
 import (
-	"go-cmdpb/progressbar"
 	"time"
+
+	"github.com/fissssssh/go-cmdpb/progressbar"
 )
 
 func main() {
